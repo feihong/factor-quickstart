@@ -4,14 +4,15 @@ IN: hello-world
 
 "HELLO;WORLD;and;goodbye;universe" >lower ";" split " " join print
 
-:: translate ( d s -- s )
+:: translate ( d s -- d )
   s >lower
   " " split
-  [ d at ] map
+  [ d ?at drop ] map  ! drop boolean indicating whether key was found
   "" join
   print
   d ;
 
+! Use the same hashtable for all translate calls
 H{ { "hello" "你好" }
    { "world" "世界" }
    { "goodbye" "再见" }
@@ -21,6 +22,6 @@ H{ { "hello" "你好" }
 
 "GOODBYE universe" translate
 
-! "hello cat" translate
+"hello CAT" translate
 
-clear
+drop  ! dictionary is still on the stack
