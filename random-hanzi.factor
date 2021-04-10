@@ -10,9 +10,8 @@ IN: random-hanzi
   0x4e00 0x9fff rand-int
   1string ;
 
-: rand-hanzis ( n -- array )
-  f <array>
-  [ drop rand-hanzi ] map ;
+: rand-hanzis ( n -- newseq )
+  [ rand-hanzi ] replicate ;
 
 rand-hanzi print
 

@@ -1,0 +1,2 @@
+- Accept number of hanzi from command line
+- GUI version of random-hanzi
