@@ -1,15 +1,12 @@
 USING: io unicode splitting sequences namespaces assocs locals kernel ;
-
 IN: hello-world
 
 "HELLO;WORLD;and;goodbye;universe" >lower ";" split " " join print
 
 :: translate ( d s -- d )
-  s >lower
-  " " split
+  s >lower " " split
   [ d ?at drop ] map  ! drop boolean indicating whether key was found
-  "" join
-  print
+  "" join print
   d ;
 
 ! Use the same hashtable for all translate calls
