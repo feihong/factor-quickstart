@@ -8,10 +8,23 @@
 
       alias factor='/usr/local/opt/factor/factor'
       alias factorui='open /usr/local/opt/factor/Factor.app'
+- Open Terminal and run `source ~/.bash_profile`
 
 Note: There seems to be a bug in the Factor UI where it appears blank until you resize the window.
 
 ## Commands
+
+Download this repo
+
+    git clone https://github.com/feihong/factor-quickstart
+
+Run Factor command line REPL
+
+    factor
+
+Run Factor UI
+
+    factorui
 
 Run script source file
 
