@@ -15,7 +15,7 @@ CONSTANT: default-n 8
 : get-n ( -- n )
   command-line get
     [ default-n ] [ first string>number ] if-empty
-  dup number? [ drop default-n ] unless ;
+  [ default-n ] unless* ;
 
 rand-hanzi print
 
