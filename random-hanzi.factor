@@ -1,4 +1,5 @@
-USING: io locals math random strings arrays kernel sequences command-line namespaces math.parser ;
+USING: io locals math random strings arrays kernel sequences command-line
+       namespaces math.parser continuations math.order ;
 IN: random-hanzi
 
 CONSTANT: default-n 8
@@ -17,9 +18,10 @@ CONSTANT: default-n 8
 : rand-hanzis ( n -- newseq ) [ rand-hanzi ] replicate ;
 
 : get-n ( -- n )
-  command-line get
-    [ default-n ] [ first string>number ] if-empty
-  [ default-n ] unless* ;
+  [ command-line get first ] [ drop f ] recover
+  string>number  ! number/f
+  [ default-n ] unless*
+  0 max ;
 
 rand-hanzi print
 
