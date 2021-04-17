@@ -1,2 +1,5 @@
-- Accept number of hanzi from command line
 - GUI version of random-hanzi
+- Read text from file
+- Write text to file
+- Read JSON from file
+- Write JSON to file
