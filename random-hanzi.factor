@@ -3,12 +3,16 @@ IN: random-hanzi
 
 CONSTANT: default-n 8
 
-:: rand-int ( start end -- n )
-  end start - 1 +
+:: local-rand[a,b] ( a b -- n )
+  b a - 1 +
   random
-  start + ;
+  a + ;
 
-: rand-hanzi ( -- s )  0x4e00 0x9fff rand-int 1string ;
+: rand[a,b] ( a b -- n )
+  over ! a b a
+  - 1 + random + ;
+
+: rand-hanzi ( -- s )  0x4e00 0x9fff rand[a,b] 1string ;
 
 : rand-hanzis ( n -- newseq ) [ rand-hanzi ] replicate ;
 
