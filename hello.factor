@@ -1,24 +1,20 @@
 USING: io unicode splitting sequences namespaces assocs locals kernel ;
-IN: hello-world
+IN: hello
 
 "HELLO;WORLD;and;goodbye;universe" >lower ";" split " " join print
 
-:: translate ( d s -- d )
-  s >lower " " split
-  [ d ?at drop ] map  ! drop boolean indicating whether key was found
-  "" join print
-  d ;
+CONSTANT: cdict  H{ { "hello" "你好" }
+                    { "world" "世界" }
+                    { "goodbye" "再见" }
+                    { "universe" "宇宙" } }
 
-! Use the same hashtable for all translate calls
-H{ { "hello" "你好" }
-   { "world" "世界" }
-   { "goodbye" "再见" }
-   { "universe" "宇宙" } }
+:: translate ( s -- )
+  s >lower " " split
+  [ cdict ?at drop ] map  ! drop boolean indicating whether key was found
+  "" join print ;
 
 "Hello World" translate
 
 "GOODBYE universe" translate
 
 "hello CAT" translate
-
-drop  ! dictionary is still on the stack
