@@ -23,17 +23,17 @@ CONSTANT: default-n 8
 
 PRIVATE>
 
-! : print-hanzi ( s -- )
-!   H{ { font-size 24 }
-!      { foreground COLOR: indian-red }
-!   } format nl
+: print-hanzi ( s -- )
+  H{ { font-size 24 }
+     { foreground COLOR: indian-red }
+  } format nl ;
 
 : rand-hanzi ( -- s )  0x4e00 0x9fff rand[a,b] 1string ;
 
 : rand-hanzis ( n -- newseq ) [ rand-hanzi ] replicate ;
 
 : main ( -- )
-  rand-hanzi print
-  get-n rand-hanzis " " join print ;
+  rand-hanzi print-hanzi
+  get-n rand-hanzis " " join print-hanzi ;
 
 MAIN: main
