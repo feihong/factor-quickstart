@@ -8,6 +8,7 @@
 
       alias factor='/usr/local/opt/factor/factor'
       alias factorui='open /usr/local/opt/factor/Factor.app'
+
 - Open Terminal and run `source ~/.bash_profile`
 
 Note: There seems to be a bug in the Factor UI where it appears blank until you resize the window.
@@ -29,6 +30,16 @@ Run Factor UI
 Run script source file
 
     factor hello.factor
+
+## Listener
+
+See all vocabulary roots
+
+    vocab-roots get .
+
+Add path to vocabulary root
+
+    add-vocab-root "/Users/bob/work/factor-quickstart"
 
 ## Links
 
