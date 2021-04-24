@@ -1,12 +1,13 @@
-USING: io math.ranges combinators math present kernel sequences strings ;
+USING: io math.ranges math.functions combinators math present kernel sequences
+       strings ;
 IN: fizzbuzz
 
 : fizzbuzz ( n -- seq )
   [1,b] [
     {
-      { [ dup 15 mod 0 = ] [ drop "FizzBuzz" ] }
-      { [ dup 3 mod 0 = ] [ drop "Fizz" ] }
-      { [ dup 5 mod 0 = ] [ drop "Buzz" ] }
+      { [ dup 15 divisor? ] [ drop "FizzBuzz" ] }
+      { [ dup 3 divisor? ] [ drop "Fizz" ] }
+      { [ dup 5 divisor? ] [ drop "Buzz" ] }
       [ present ]
     } cond
   ] map ;
