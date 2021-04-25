@@ -1,8 +1,9 @@
-USING: io io.styles colors.constants assocs locals sequences ;
+USING: io io.styles colors.constants assocs locals sequences math.parser ;
 QUALIFIED: colors.constants.private
 IN: hello-format
 
-:: print-color ( name color -- )
+:: print-color ( index name color -- )
+  index number>string ". " append H{ { font-size 32 } } format
   name H{ { foreground color } { font-size 32 } } format
   " " write
   name H{ { foreground color }
@@ -10,13 +11,14 @@ IN: hello-format
           { background COLOR: black } } format nl ;
 
 : print-colors ( -- )
-  colors.constants.private:colors >alist [ first2 print-color ] each ;
+  colors.constants.private:colors >alist
+  [| array index | index array first2 print-color ] each-index ;
 
 : main ( -- )
   "Hello World" H{ { font-size 32 } } format nl
 
   "你好世界！" H{ { font-size 32 }
-                { foreground COLOR: indian-red }
+                { foreground COLOR: red }
               } format nl ;
 
 ! MAIN: main
