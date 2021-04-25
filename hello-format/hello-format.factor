@@ -1,4 +1,5 @@
-USING: io io.styles colors.constants assocs locals sequences math.parser ;
+USING: io io.styles colors.constants assocs locals sequences math.parser
+       math.order kernel unicode sorting ;
 QUALIFIED: colors.constants.private
 IN: hello-format
 
@@ -12,6 +13,7 @@ IN: hello-format
 
 : print-colors ( -- )
   colors.constants.private:colors >alist
+  [ [ first >lower ] bi@ <=> ] sort
   [| array index | index array first2 print-color ] each-index ;
 
 : main ( -- )
